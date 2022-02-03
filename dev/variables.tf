@@ -40,5 +40,5 @@ variable "instance_type" {
 variable "instance_count" {
   type = number
   description = "number of ec2 instances to create"
-  default = 2
+  default = 1
 }
