@@ -1,0 +1,3 @@
+data "asw_subnet_ids" sample {
+	id = var.vpc_id
+}
