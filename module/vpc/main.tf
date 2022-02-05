@@ -16,7 +16,7 @@ module "vpc" {
   database_subnets = var.database_subnets
 
   tags = {
-    Name = "ktech-${var.environ}-vpc"
+    Name = "${local.name_sufix}-vpc"
     Environment = var.environ
     ManagedBy = "terraform"
   }
