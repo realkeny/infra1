@@ -8,12 +8,6 @@ provider "aws" {
   secret_key = var.aws_secret
 }
 
-variable "environ" {
-  type        = string
-  description = "infrastructure environment"
-  default     = "production"
-}
-
 data "aws_ami" "linux2" {
  most_recent = true
 
@@ -81,7 +75,8 @@ data "aws_security_groups" "private_sg" {
 module "ec2_app" {
   source = "../../modules/ec2"
 
-  infra_env = var.environ
+  #name = "app1"
+  environ = var.environ
   infra_role = "web"
   instance_size = "t2.micro"
   instance_ami = data.aws_ami.linux2.id
@@ -97,7 +92,8 @@ module "ec2_app" {
 module "ec2_worker" {
   source = "../../modules/ec2"
 
-  infra_env = var.infra_env
+  #name = "worker1"
+  environ = var.environ
   infra_role = "worker"
   instance_size = "t2.micro"
   instance_ami = data.aws_ami.linux2.id
